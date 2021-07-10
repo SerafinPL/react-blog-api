@@ -12,7 +12,7 @@ const Navigation = props => {
             <NavLink to="/" exact>All Posts</NavLink>
           </li>
           <li>
-            <NavLink to="/favoritespost">Favorites Posts</NavLink>
+            <NavLink to="/favoritesposts">Favorites Posts</NavLink>
           </li>
           <li>
             <NavLink to="/favoritescomments">Favorites Comments</NavLink>
