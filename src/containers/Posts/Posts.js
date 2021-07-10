@@ -1,19 +1,32 @@
 import React, { useEffect } from "react";
 
+import Post from "../../components/Post/Post"
+
+import { useSelector, useDispatch } from 'react-redux';
 
 
-//import { useSelector, useDispatch } from 'react-redux';
 
-//import "./Posts.css";
+import "./Posts.css";
 import { Link, Route } from "react-router-dom";
 
+
+
 const Posts = (props) => {
-  const dispatch = useDispatch();
+  
+  
+  
+    const dispatch = useDispatch();
+
+    
 
   useEffect(() => {
-    //console.log(props);
+    console.log(props);
+    dispatch({type: 'GET_POST'});
     
+
   }, []);
+
+  const productList = useSelector(state => state.blog.posts);
 
   const postSelectedHandler = (id) => {
     props.history.push("/posts/" + id);
@@ -33,7 +46,7 @@ const Posts = (props) => {
         <Post
           key={post.id}
           title={post.title}
-          author={post.author}
+        //   author={post.author}
           clicked={() => postSelectedHandler(post.id)}
         />
       );
@@ -42,8 +55,8 @@ const Posts = (props) => {
 
   return (
     <div>
-      <Route path={props.match.url + "/:postId"} exact component={FullPost} />
-      <section className="Posts">{posts}</section>
+      {/* <Route path={props.match.url + "/:postId"} exact component={FullPost} /> */}
+      <section className="Posts">{posts}{productList}</section>
     </div>
   );
 };

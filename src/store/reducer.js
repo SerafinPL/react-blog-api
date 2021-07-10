@@ -31,6 +31,18 @@ const reducer = (state = initialState, action) => {
 			} else { return state; }
 			
 		}
+		case actionTypes.GET_POST:{
+			console.log('GETPoSTS');
+			fetch('https://jsonplaceholder.typicode.com/posts', {
+				method: 'GET',
+				headers: {
+					'Content-Type' : 'application/json' 
+				}
+			}).then(res => res.json()).then(res => console.log(res));
+
+			
+		}
+
 	}
 
 	return state;	
