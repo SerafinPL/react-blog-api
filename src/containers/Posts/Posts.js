@@ -1,32 +1,39 @@
 import React, { useEffect } from "react";
 
-import Post from "../../components/Post/Post"
+import Post from "../../components/Post/Post";
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from "react-redux";
 
 
+import * as actionTypes from "../../store/actionTypes";
 
 import "./Posts.css";
 import { Link, Route } from "react-router-dom";
 
-
-
 const Posts = (props) => {
-  
-  
-  
-    const dispatch = useDispatch();
-
-    
-
+  const dispatch = useDispatch();
   useEffect(() => {
     console.log(props);
-    dispatch({type: 'GET_POST'});
-    
+    fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
 
+        dispatch({
+          type: actionTypes.STORE_RESULT,
+          result: res, //upDatedResult
+          error: false,
+        });
+      });
   }, []);
 
-  const productList = useSelector(state => state.blog.posts);
+  const List = useSelector((state) => state.blog.posts);
+  console.log(List);
 
   const postSelectedHandler = (id) => {
     props.history.push("/posts/" + id);
@@ -46,7 +53,7 @@ const Posts = (props) => {
         <Post
           key={post.id}
           title={post.title}
-        //   author={post.author}
+          //   author={post.author}
           clicked={() => postSelectedHandler(post.id)}
         />
       );
@@ -56,11 +63,10 @@ const Posts = (props) => {
   return (
     <div>
       {/* <Route path={props.match.url + "/:postId"} exact component={FullPost} /> */}
-      <section className="Posts">{posts}{productList}</section>
+      <section className="Posts">{posts}</section>
+      {/* <section className="Posts">{List}</section> */}
     </div>
   );
 };
-
-
 
 export default Posts;
