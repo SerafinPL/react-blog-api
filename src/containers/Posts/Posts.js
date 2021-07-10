@@ -11,6 +11,7 @@ import { Link, Route } from "react-router-dom";
 
 const Posts = (props) => {
   const dispatch = useDispatch();
+
   useEffect(() => {
     console.log(props);
     fetch("https://jsonplaceholder.typicode.com/posts", {
@@ -20,36 +21,32 @@ const Posts = (props) => {
       },
     })
       .then((res) => {
-        if (res.ok){
-            return res.json();
+        if (res.ok) {
+          return res.json();
         } else {
-            throw Error(res.statusText);
+          throw Error(res.statusText);
         }
-        
       })
       .then((res) => {
-        console.log(res);
-
         dispatch({
           type: actionTypes.STORE_RESULT,
           result: res, //upDatedResult
           error: false,
         });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         console.log(err);
         dispatch({
-            type: actionTypes.STORE_RESULT,
-            result: err, //upDatedResult
-            error: true,
-          });
+          type: actionTypes.STORE_RESULT,
+          result: err, //upDatedResult
+          error: true,
+        });
       });
   }, []);
 
   const List = useSelector((state) => state.blog.posts);
   const RedError = useSelector((state) => state.blog.error);
   const RedLoad = useSelector((state) => state.blog.load);
-  console.log(List);
-  
 
   const postSelectedHandler = (id) => {
     props.history.push("/posts/" + id);
@@ -62,11 +59,8 @@ const Posts = (props) => {
       <p style={{ textAlign: "center" }}>Coś jest nie tak pojawił się ERROR</p>
     );
   }
-  console.log(RedError);
-  console.log(RedLoad);
 
-  if (!RedError && RedLoad ) {
-
+  if (!RedError && RedLoad) {
     posts = List.map((post) => {
       return (
         <Post
@@ -82,7 +76,7 @@ const Posts = (props) => {
     <div>
       {/* <Route path={props.match.url + "/:postId"} exact component={FullPost} /> */}
       <section className="Posts">{posts}</section>
-      {/* <section className="Posts">{List}</section> */}
+      
     </div>
   );
 };

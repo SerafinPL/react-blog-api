@@ -35,38 +35,8 @@ const reducer = (state = initialState, action) => {
         return state;
       }
     }
-    // case actionTypes.GET_POST: {
-    //   console.log("GETPoSTS");
-
-    //   let data;
-
-    //   fetch("https://jsonplaceholder.typicode.com/posts", {
-    //     method: "GET",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //   })
-    //     .then((res) => res.json())
-    //     .then((res) => {
-    //       console.log(res);
-    //       data = res;
-	// return {
-	// 	    ...state,
-	// 			posts: data,
-	// 	    loaded: false,
-	// 	    error: true,
-	// 	    load: true,
-	// 	  };
-    //     });
-		
-    // //   return {
-    // //     ...state,
-	// // 		posts: data,
-    // //     loaded: false,
-    // //     error: true,
-    // //     load: true,
-    // //   };
-    //  }
+	
+   
   }
 
   return state;
