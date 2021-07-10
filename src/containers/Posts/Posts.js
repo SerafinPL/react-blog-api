@@ -4,7 +4,6 @@ import Post from "../../components/Post/Post";
 
 import { useSelector, useDispatch } from "react-redux";
 
-
 import * as actionTypes from "../../store/actionTypes";
 
 import "./Posts.css";
@@ -20,7 +19,14 @@ const Posts = (props) => {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.ok){
+            return res.json();
+        } else {
+            throw Error(res.statusText);
+        }
+        
+      })
       .then((res) => {
         console.log(res);
 
@@ -29,11 +35,21 @@ const Posts = (props) => {
           result: res, //upDatedResult
           error: false,
         });
+      }).catch((err) => {
+        console.log(err);
+        dispatch({
+            type: actionTypes.STORE_RESULT,
+            result: err, //upDatedResult
+            error: true,
+          });
       });
   }, []);
 
   const List = useSelector((state) => state.blog.posts);
+  const RedError = useSelector((state) => state.blog.error);
+  const RedLoad = useSelector((state) => state.blog.load);
   console.log(List);
+  
 
   const postSelectedHandler = (id) => {
     props.history.push("/posts/" + id);
@@ -41,19 +57,21 @@ const Posts = (props) => {
 
   let posts = <p style={{ textAlign: "center" }}>Ładowanie postów</p>;
 
-  if (props.RedError) {
+  if (RedError) {
     posts = (
       <p style={{ textAlign: "center" }}>Coś jest nie tak pojawił się ERROR</p>
     );
   }
+  console.log(RedError);
+  console.log(RedLoad);
 
-  if (!props.RedError && props.RedLoad) {
-    posts = props.RedPost.map((post) => {
+  if (!RedError && RedLoad ) {
+
+    posts = List.map((post) => {
       return (
         <Post
           key={post.id}
           title={post.title}
-          //   author={post.author}
           clicked={() => postSelectedHandler(post.id)}
         />
       );
