@@ -30,6 +30,7 @@ const Posts = (props) => {
         }
       })
       .then((res) => {
+        
         dispatch({
           type: actionTypes.STORE_RESULT,
           result: res, //upDatedResult

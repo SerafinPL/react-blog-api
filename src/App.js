@@ -7,6 +7,7 @@ import "./App.css";
 
 import Navigation from "./components/Nav/Navigation";
 import Posts from "./containers/Posts/Posts";
+import FullPost from "./components/FullPost/FullPost";
 
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
@@ -28,9 +29,11 @@ const App = () => {
         <div className="App">
           <Navigation></Navigation>
           <main>
+            <Route path={"/posts/:postId"} exact component={FullPost} /> 
             <Route path="/" component={Posts} exact />
             {/* <Route path="/favoritesposts" component={FavPosts} /> */}
             {/* <Route path="/favoritescomments" component={FavComments} /> */}
+
           </main>
         </div>
       </HashRouter>
