@@ -1,8 +1,5 @@
 import * as actionTypes from "./actionTypes";
 
-
-
-
 const initialState = {
   posts: [],
   comments: [],
@@ -12,8 +9,6 @@ const initialState = {
 };
 
 const reducer = (state = initialState, action) => {
-	
-
   switch (action.type) {
     case actionTypes.STORE_RESULT: {
       if (!state.loaded && !action.error) {
@@ -35,8 +30,6 @@ const reducer = (state = initialState, action) => {
         return state;
       }
     }
-	
-   
   }
 
   return state;

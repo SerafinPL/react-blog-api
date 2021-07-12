@@ -9,6 +9,8 @@ import * as actionTypes from "../../store/actionTypes";
 import "./Posts.css";
 import { Link, Route } from "react-router-dom";
 
+import FullPost from '../../components/FullPost/FullPost';
+
 const Posts = (props) => {
   const dispatch = useDispatch();
 
@@ -74,7 +76,7 @@ const Posts = (props) => {
 
   return (
     <div>
-      {/* <Route path={props.match.url + "/:postId"} exact component={FullPost} /> */}
+      {/* <Route path={props.match.url + "/posts/:postId"} exact component={FullPost} /> */}
       <section className="Posts">{posts}</section>
       
     </div>
