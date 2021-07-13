@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 import { useSelector } from "react-redux";
 
@@ -7,25 +7,41 @@ import { useSelector } from "react-redux";
 import "./FullPost.css";
 
 const FullPost = (props) => {
-  
+    
+    const [error, setError] = useState(null);
+    const [commentsList, setCommentsList] = useState(null);
+
+    useEffect(() => {
+
+        fetch(`https://jsonplaceholder.typicode.com/posts/${props.match.params.postId}/comments`, {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => {
+              if (res.ok) {
+                return res.json();
+              } else {
+                throw Error(res.statusText);
+              }
+            })
+            .then((res) => {
+                            
+            })
+            .catch((err) => {
+                setError(true); 
+            });
+
+    },[]);
 
   const [postItem] = useSelector((state) =>
     state.blog.posts.filter((post) => post.id == props.match.params.postId)
   );
 
-  const List = useSelector((state) => state.blog.posts);
-
   let post = (
     <p style={{ textAlign: "center" }}>Nie odnaleziono takiego fake posta!</p>
   );
-
-  if (props.match.params.postId) {
-    post = (
-      <p style={{ textAlign: "center" }}>
-        Ładowanie... {props.match.params.postId}
-      </p>
-    );
-  }
 
   if (postItem) {
     post = (

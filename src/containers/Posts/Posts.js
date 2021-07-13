@@ -9,13 +9,11 @@ import * as actionTypes from "../../store/actionTypes";
 import "./Posts.css";
 import { Link, Route } from "react-router-dom";
 
-import FullPost from '../../components/FullPost/FullPost';
-
 const Posts = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(props);
+    
     fetch("https://jsonplaceholder.typicode.com/posts", {
       method: "GET",
       headers: {

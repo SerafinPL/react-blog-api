@@ -1,7 +1,7 @@
 import React from "react";
 
 import { HashRouter } from "react-router-dom";
-import { Route } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 
 import "./App.css";
 
@@ -11,8 +11,6 @@ import FullPost from "./components/FullPost/FullPost";
 
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
-
-
 
 import dataReducer from "./store/reducer";
 
@@ -29,11 +27,15 @@ const App = () => {
         <div className="App">
           <Navigation></Navigation>
           <main>
-            <Route path={"/posts/:postId"} exact component={FullPost} /> 
-            <Route path="/" component={Posts} exact />
-            {/* <Route path="/favoritesposts" component={FavPosts} /> */}
-            {/* <Route path="/favoritescomments" component={FavComments} /> */}
-
+            <Switch>
+              <Route path={"/posts/:postId"} exact component={FullPost} />
+              
+              {/* <Route path="/favoritesposts" component={FavPosts} /> */}
+              {/* <Route path="/favoritescomments" component={FavComments} /> */}
+              
+              <Route path="/" component={Posts} />
+              
+            </Switch>
           </main>
         </div>
       </HashRouter>
