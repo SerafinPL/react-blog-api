@@ -1,0 +1,40 @@
+.mainHeader {
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff2058;
+}
+
+.mainHeader nav {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainHeader ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainHeader li {
+  padding: 0;
+  margin: 0 2rem;
+}
+
+.mainHeader a {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+}
+
+.mainHeader a:hover,
+.mainHeader a:active,
+.mainHeader a.active {
+  color: #560061;
+}
