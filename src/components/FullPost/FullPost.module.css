@@ -9,6 +9,12 @@
 
 .FullPost p {
     text-align: left;
+    padding: 10px;
+}
+
+.FullPost small {
+    text-align: right;
+    padding: 1px 1px 15px 1px;
 }
 
 .FullPost button {

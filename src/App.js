@@ -3,7 +3,7 @@ import React from "react";
 import { HashRouter } from "react-router-dom";
 import { Route, Switch, Redirect } from "react-router-dom";
 
-import "./App.css";
+import classes from "./App.module.css";
 
 import Navigation from "./components/Nav/Navigation";
 import Posts from "./containers/Posts/Posts";
@@ -24,12 +24,12 @@ const App = () => {
   return (
     <Provider store={store}>
       <HashRouter basename="/">
-        <div className="App">
+        <div className={classes.App}>
           <Navigation></Navigation>
           <main>
             <Switch>
               <Route path={"/posts/:postId"} exact component={FullPost} />
-              
+
               {/* <Route path="/favoritesposts" component={FavPosts} /> */}
               {/* <Route path="/favoritescomments" component={FavComments} /> */}
               

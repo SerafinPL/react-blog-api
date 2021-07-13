@@ -51,7 +51,7 @@ const FullPost = (props) => {
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button onClick>{postItem.fav ? 'Remove from Favorites' : 'Add to Favorites'}</button>
+          <button>Add to Favorites</button>
         </div>
       );
     });
@@ -65,7 +65,8 @@ const FullPost = (props) => {
         <div className={classes.FullPost}>
           <h1>{postItem.title}</h1>
           <p>{postItem.body}</p>
-          <button>Add to Favorites</button>
+          <button onClick>{postItem.fav ? 'Remove from Favorites' : 'Add to Favorites'}</button>
+          
         </div>
         <div className={classes.FullPost}>
           <h2>Comment List</h2>

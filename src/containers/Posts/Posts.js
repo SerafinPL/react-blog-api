@@ -6,8 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as actionTypes from "../../store/actionTypes";
 
-import "./Posts.css";
-import { Link, Route } from "react-router-dom";
+import classes from "./Posts.module.css";
+
 
 const Posts = (props) => {
   const dispatch = useDispatch();
@@ -82,7 +82,7 @@ const Posts = (props) => {
   return (
     <div>
       
-      <section className="Posts">{posts}</section>
+      <section className={classes.Posts}>{posts}</section>
       
     </div>
   );
