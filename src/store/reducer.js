@@ -35,15 +35,16 @@ const reducer = (state = initialState, action) => {
       const postIndex = state.posts.findIndex(
         p => p.id === action.id
       );
+      
       const newFavStatus = !state.posts[postIndex].fav;
       const updatedPost = [...state.posts];
       updatedPost[postIndex] = {
         ...state.posts[postIndex],
-        isFavorite: newFavStatus
+        fav: newFavStatus
       };
       return {
         ...state,
-        products: updatedPost
+        posts: updatedPost
       };
     default:
       return state;

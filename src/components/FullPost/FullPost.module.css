@@ -18,7 +18,7 @@
 }
 
 .FullPost button {
-    width: 150px;
+    width: 175px;
     align-self: flex-end;
     border: 0px;
     border-top-left-radius: 15px;
@@ -29,4 +29,21 @@
 .FullPost button:hover {
     background-color: aquamarine;
     
+}
+
+.CommentArea{
+    width: 90%;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.CommentArea p{
+    font-size: 0.8em;
+    padding: 1px 15px;
+}
+
+.FullPost small {
+    font-size: 0.7em;
+    padding-right: 5px;
 }
