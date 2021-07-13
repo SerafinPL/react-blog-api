@@ -81,7 +81,7 @@ const Posts = (props) => {
 
   return (
     <div>
-      {/* <Route path={props.match.url + "/posts/:postId"} exact component={FullPost} /> */}
+      
       <section className="Posts">{posts}</section>
       
     </div>

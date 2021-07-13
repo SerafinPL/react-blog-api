@@ -3,36 +3,24 @@
     margin: 20px auto;
     border: 1px solid #eee;
     box-shadow: 0 2px 3px #ccc;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
 }
 
-.Edit {
-
+.FullPost p {
+    text-align: left;
 }
 
-.Edit label {
-    display: block;
-    color: grey;
-}
-
-.Edit button {
-    border: none;
-    background-color: transparent;
+.FullPost button {
+    width: 150px;
+    align-self: flex-end;
+    border: 0px;
+    border-top-left-radius: 15px;
     cursor: pointer;
-    outline: none;
-    color: #fa923f;
+
 }
 
-.Edit button:hover,
-.Edit button:active {
-    color: #521751;
-}
-
-.Edit button.Delete {
-    color: red;
-}
-
-.Edit button.Delete:hover,
-.Edit button.Delete:active {
-    color: darkred;
+.FullPost button:hover {
+    background-color: aquamarine;
+    
 }

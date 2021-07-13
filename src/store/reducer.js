@@ -29,7 +29,24 @@ const reducer = (state = initialState, action) => {
       } else {
         return state;
       }
+
     }
+    case actionTypes.TOGGLE_FAV:
+      const postIndex = state.posts.findIndex(
+        p => p.id === action.id
+      );
+      const newFavStatus = !state.posts[postIndex].fav;
+      const updatedPost = [...state.posts];
+      updatedPost[postIndex] = {
+        ...state.posts[postIndex],
+        isFavorite: newFavStatus
+      };
+      return {
+        ...state,
+        products: updatedPost
+      };
+    default:
+      return state;
   }
 
   return state;

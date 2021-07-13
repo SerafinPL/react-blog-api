@@ -28,11 +28,8 @@ const FullPost = (props) => {
         }
       })
       .then((res) => {
-        const changeRes = res.map(element => {
-            element.fav = false;
-            return element;
-          });
-        setCommentsList(changeRes);
+        
+        setCommentsList(res);
       })
       .catch((err) => {
         setError(true);
@@ -54,7 +51,7 @@ const FullPost = (props) => {
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button>Add to Favorites</button>
+          <button onClick>{postItem.fav ? 'Remove from Favorites' : 'Add to Favorites'}</button>
         </div>
       );
     });
