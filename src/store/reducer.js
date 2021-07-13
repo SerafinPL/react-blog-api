@@ -2,7 +2,7 @@ import * as actionTypes from "./actionTypes";
 
 const initialState = {
   posts: [],
-  comments: [],
+  commentsFav: [],
   loaded: false,
   error: null,
   load: false,

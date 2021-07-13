@@ -28,10 +28,16 @@ const Posts = (props) => {
         }
       })
       .then((res) => {
+
+
+        const changeRes = res.map(element => {
+          element.fav = false;
+          return element;
+        });
         
         dispatch({
           type: actionTypes.STORE_RESULT,
-          result: res, //upDatedResult
+          result: changeRes, 
           error: false,
         });
       })
@@ -39,7 +45,7 @@ const Posts = (props) => {
         console.log(err);
         dispatch({
           type: actionTypes.STORE_RESULT,
-          result: err, //upDatedResult
+          result: err, 
           error: true,
         });
       });
