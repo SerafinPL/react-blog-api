@@ -28,8 +28,11 @@ const FullPost = (props) => {
         }
       })
       .then((res) => {
-        console.log(res);
-        setCommentsList(res);
+        const changeRes = res.map(element => {
+            element.fav = false;
+            return element;
+          });
+        setCommentsList(changeRes);
       })
       .catch((err) => {
         setError(true);
@@ -43,18 +46,21 @@ const FullPost = (props) => {
   let post = (
     <p style={{ textAlign: "center" }}>Nie odnaleziono takiego fake posta!</p>
   );
-    let comments = [];
+  let comments = [];
   if (commentsList) {
-    comments = commentsList.map((comment) =>{
-        return(
-            <div key={comment.id}>
-                <h3>{comment.name}</h3>
-                <p>{comment.body}</p>
-                <small>{comment.email}</small>
+    comments = commentsList.map((comment) => {
+      return (
+        <div key={comment.id} className={classes.FullPost}>
+          <h3>{comment.name}</h3>
+          <p>{comment.body}</p>
+          <small>{comment.email}</small>
+          <button>Add to Favorites</button>
         </div>
-        )
+      );
     });
   }
+
+  console.log(postItem)
 
   if (postItem) {
     post = (
@@ -65,8 +71,9 @@ const FullPost = (props) => {
           <button>Add to Favorites</button>
         </div>
         <div className={classes.FullPost}>
-            <h1>Comment List</h1>
-          {commentsList ? comments : 'Comments are loading...'}
+          <h2>Comment List</h2>
+          {error ? "Comments are not loaded..." : 
+          commentsList ? comments : "Comments are loading..."}
         </div>
       </React.Fragment>
     );
