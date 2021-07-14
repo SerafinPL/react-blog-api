@@ -7,7 +7,7 @@ import classes from "./App.module.css";
 
 import Navigation from "./components/Nav/Navigation";
 import Posts from "./containers/Posts/Posts";
-import FullPost from "./components/FullPost/FullPost";
+import FullPost from "./containers/FullPost/FullPost";
 import FavPosts from "./components/FavPost/FavPost";
 
 import { Provider } from "react-redux";

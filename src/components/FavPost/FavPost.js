@@ -4,8 +4,6 @@ import Post from "../../components/Post/Post";
 
 import { useSelector } from "react-redux";
 
-
-
 import classes from "./FavPosts.module.css";
 
 const FavPosts = (props) => {
@@ -14,6 +12,12 @@ const FavPosts = (props) => {
   const postSelectedHandler = (id) => {
     props.history.push("/posts/" + id);
   };
+
+  let noContent = false;
+
+  if (List.length === 0 ) {
+    noContent = true;
+  }
 
   const favPosts = List.map((post) => {
     return (
@@ -28,6 +32,7 @@ const FavPosts = (props) => {
   return (
     <div>
       <section className={classes.FavPosts}>{favPosts}</section>
+      <h1>{noContent && 'No Favorites yet...'}</h1>
     </div>
   );
 };
