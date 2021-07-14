@@ -8,6 +8,7 @@ import classes from "./App.module.css";
 import Navigation from "./components/Nav/Navigation";
 import Posts from "./containers/Posts/Posts";
 import FullPost from "./components/FullPost/FullPost";
+import FavPosts from "./components/FavPost/FavPost";
 
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
@@ -30,7 +31,7 @@ const App = () => {
             <Switch>
               <Route path={"/posts/:postId"} exact component={FullPost} />
 
-              {/* <Route path="/favoritesposts" component={FavPosts} /> */}
+              <Route path="/favoritesposts" component={FavPosts} /> 
               {/* <Route path="/favoritescomments" component={FavComments} /> */}
               
               <Route path="/" component={Posts} />

@@ -48,7 +48,7 @@ const FullPost = (props) => {
     });
   };
 
-  let post = <Redirect />;
+  let post = <Redirect to='/'/>;
 
   let comments = [];
   if (commentsList) {
