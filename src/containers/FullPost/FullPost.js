@@ -62,15 +62,22 @@ const FullPost = (props) => {
 
   let post = <Redirect to='/'/>;
 
+ 
+
   let comments = [];
   if (commentsList) {
     comments = commentsList.map((comment) => {
+
+      const isFav = favComments.findIndex(favIndex => favIndex === comment.id) > -1
+
       return (
         <div key={comment.id} className={classes.FullPost}>
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button onClick={() => favCommentClick(comment.id)}>Add to Favorites</button>
+          <button onClick={() => favCommentClick(comment.id)}>
+          {isFav ? "Remove from Favorites" : "Add to Favorites"}
+          </button>
         </div>
       );
     });
