@@ -9,6 +9,7 @@ import Navigation from "./components/Nav/Navigation";
 import Posts from "./containers/Posts/Posts";
 import FullPost from "./containers/FullPost/FullPost";
 import FavPosts from "./components/FavPosts/FavPosts";
+import FavComments from "./components/FavComments/FavComments";
 
 import { Provider } from "react-redux";
 import { combineReducers, createStore } from "redux";
@@ -32,7 +33,7 @@ const App = () => {
               <Route path={"/posts/:postId"} exact component={FullPost} />
 
               <Route path="/favoritesposts" component={FavPosts} /> 
-              {/* <Route path="/favoritescomments" component={FavComments} /> */}
+              <Route path="/favoritescomments" component={FavComments} />
               
               <Route path="/" component={Posts} />
               

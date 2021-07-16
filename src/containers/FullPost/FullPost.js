@@ -68,7 +68,7 @@ const FullPost = (props) => {
   if (commentsList) {
     comments = commentsList.map((comment) => {
 
-      const isFav = favComments.findIndex(favIndex => favIndex === comment.id) > -1
+      const isFav = favComments.findIndex(fav => fav.id === comment.id) > -1
 
       return (
         <div key={comment.id} className={classes.FullPost}>
