@@ -75,7 +75,7 @@ const FullPost = (props) => {
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button onClick={() => favCommentClick(comment.id)}>
+          <button  className={isFav ? classes.Fav : classes.NoFav} onClick={() => favCommentClick(comment.id)}>
           {isFav ? "Remove from Favorites" : "Add to Favorites"}
           </button>
         </div>
