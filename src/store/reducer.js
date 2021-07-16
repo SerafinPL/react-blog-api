@@ -45,10 +45,10 @@ const reducer = (state = initialState, action) => {
         posts: updatedPost,
       };
 
-    case actionTypes.ADD_COMMENT_TO_FAV:
-      if ( state.commentsFav.findIndex( (comment) => comment === action.commentId ) === -1 ) {
+    case actionTypes.TOGGLE_COMMENT_TO_FAV:
+      if ( state.commentsFav.findIndex( (element) => element.id === action.comment.id ) === -1 ) {
         const favComments = [...state.commentsFav];
-        favComments.push(action.commentId);
+        favComments.push(action.comment);
         console.log(favComments);
         return {
           ...state,
@@ -57,7 +57,7 @@ const reducer = (state = initialState, action) => {
       } else {
         let favComments = [...state.commentsFav];
         const favIndex = state.commentsFav.findIndex(
-          (comment) => comment === action.commentId
+          (comment) => comment.id === action.comment.id
         );
 
         favComments.splice(favIndex, 1);

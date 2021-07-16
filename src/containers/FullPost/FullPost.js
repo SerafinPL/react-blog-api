@@ -53,10 +53,10 @@ const FullPost = (props) => {
     });
   };
 
-  const favCommentClick = (commentId) => {
+  const favCommentClick = (comment) => {
     dispatch({
-      type: actionTypes.ADD_COMMENT_TO_FAV,
-      commentId: commentId,
+      type: actionTypes.TOGGLE_COMMENT_TO_FAV,
+      comment: comment,
     });
   };
 
@@ -75,7 +75,7 @@ const FullPost = (props) => {
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button  className={isFav ? classes.Fav : classes.NoFav} onClick={() => favCommentClick(comment.id)}>
+          <button  className={isFav ? classes.Fav : classes.NoFav} onClick={() => favCommentClick(comment)}>
           {isFav ? "Remove from Favorites" : "Add to Favorites"}
           </button>
         </div>
