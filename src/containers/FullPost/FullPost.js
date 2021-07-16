@@ -16,6 +16,11 @@ const FullPost = (props) => {
     state.blog.posts.filter((post) => post.id == props.match.params.postId)
   );
 
+  const favComments = useSelector((state) =>
+    state.blog.commentsFav
+  );
+  
+
   useEffect(() => {
     fetch(
       `https://jsonplaceholder.typicode.com/posts/${props.match.params.postId}/comments`,

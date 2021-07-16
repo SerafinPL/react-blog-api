@@ -29,39 +29,38 @@ const reducer = (state = initialState, action) => {
       } else {
         return state;
       }
-
     }
 
     case actionTypes.TOGGLE_FAV:
-      const postIndex = state.posts.findIndex(
-        p => p.id === action.id
-      );
-      
+      const postIndex = state.posts.findIndex((p) => p.id === action.id);
+
       const newFavStatus = !state.posts[postIndex].fav;
       const updatedPost = [...state.posts];
       updatedPost[postIndex] = {
         ...state.posts[postIndex],
-        fav: newFavStatus
+        fav: newFavStatus,
       };
       return {
         ...state,
-        posts: updatedPost
+        posts: updatedPost,
       };
 
-      case actionTypes.ADD_COMMENT_TO_FAV:
-             
-      const favComments = [...state.commentsFav];
-      favComments.push( action.commentId );
-      console.log(favComments)
-      return {
-        ...state,
-        commentsFav: favComments
-      };
+    case actionTypes.ADD_COMMENT_TO_FAV:
+      if (state.commentsFav.findIndex(comment => comment === action.commentId) === -1) {
+        const favComments = [...state.commentsFav];
+        favComments.push(action.commentId);
+        console.log(favComments);
+        return {
+          ...state,
+          commentsFav: favComments,
+        };
+      } else {
+        return state;
+      }
+
     default:
       return state;
   }
-
-  
 };
 
 export default reducer;
