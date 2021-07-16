@@ -31,6 +31,7 @@ const reducer = (state = initialState, action) => {
       }
 
     }
+
     case actionTypes.TOGGLE_FAV:
       const postIndex = state.posts.findIndex(
         p => p.id === action.id
@@ -45,6 +46,16 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         posts: updatedPost
+      };
+
+      case actionTypes.ADD_COMMENT_TO_FAV:
+             
+      const favComments = [...state.commentsFav];
+      favComments.push( action.commentId );
+      console.log(favComments)
+      return {
+        ...state,
+        commentsFav: favComments
       };
     default:
       return state;

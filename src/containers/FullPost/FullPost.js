@@ -41,10 +41,17 @@ const FullPost = (props) => {
       });
   }, []);
 
-  const favClick = () => {
+  const favPostClick = () => {
     dispatch({
       type: actionTypes.TOGGLE_FAV,
       id: postItem.id,
+    });
+  };
+
+  const favCommentClick = (commentId) => {
+    dispatch({
+      type: actionTypes.ADD_COMMENT_TO_FAV,
+      commentId: commentId,
     });
   };
 
@@ -58,7 +65,7 @@ const FullPost = (props) => {
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button>Add to Favorites</button>
+          <button onClick={() => favCommentClick(comment.id)}>Add to Favorites</button>
         </div>
       );
     });
@@ -70,7 +77,7 @@ const FullPost = (props) => {
         <div className={classes.FullPost}>
           <h1>{postItem.title}</h1>
           <p>{postItem.body}</p>
-          <button className={postItem.fav && classes.Fav } onClick={favClick}>
+          <button className={postItem.fav ? classes.Fav : classes.NoFav} onClick={favPostClick}>
             {postItem.fav ? "Remove from Favorites" : "Add to Favorites"}
           </button>
         </div>
@@ -79,8 +86,8 @@ const FullPost = (props) => {
           {error
             ? "Comments are not loaded..."
             : commentsList
-            ? comments
-            : "Comments are loading..."}
+              ? comments
+              : "Comments are loading..."}
         </div>
       </React.Fragment>
     );
