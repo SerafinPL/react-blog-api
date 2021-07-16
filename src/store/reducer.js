@@ -46,7 +46,7 @@ const reducer = (state = initialState, action) => {
       };
 
     case actionTypes.ADD_COMMENT_TO_FAV:
-      if (state.commentsFav.findIndex(comment => comment === action.commentId) === -1) {
+      if ( state.commentsFav.findIndex( (comment) => comment === action.commentId ) === -1 ) {
         const favComments = [...state.commentsFav];
         favComments.push(action.commentId);
         console.log(favComments);
@@ -55,7 +55,17 @@ const reducer = (state = initialState, action) => {
           commentsFav: favComments,
         };
       } else {
-        return state;
+        let favComments = [...state.commentsFav];
+        const favIndex = state.commentsFav.findIndex(
+          (comment) => comment === action.commentId
+        );
+
+        favComments.splice(favIndex, 1);
+        console.log(favComments);
+        return {
+          ...state,
+          commentsFav: favComments,
+        };
       }
 
     default:
