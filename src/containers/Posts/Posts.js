@@ -17,7 +17,7 @@ const Posts = (props) => {
     props.history.push("/posts/" + id);
   };
 
-  let posts = <p style={{ textAlign: "center" }}>Post downloaded pleace wait...</p>;
+  let posts = <p style={{ textAlign: "center" }}>Post are downloading pleace wait...</p>;
 
   if (RedError) {
     posts = (
