@@ -7,10 +7,15 @@
     margin: 10px;
     box-sizing: border-box;
     cursor: pointer;
+    background-color: #c6fafd;
 }
 
 .Post:hover,
 .Post:active {
-    background-color: #C0DDF5;
+    background-color: #5c5ad6;
+    color:#FFF;
 }
 
+.move{
+    perspective: 100px;
+}

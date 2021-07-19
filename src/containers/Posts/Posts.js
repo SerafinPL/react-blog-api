@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 
 import * as actionTypes from "../../store/actionTypes";
 
+import * as actionsCreators from "../../store/actionCreators";
+
 import classes from "./Posts.module.css";
 
 

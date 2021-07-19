@@ -12,7 +12,9 @@ import FavPosts from "./components/FavPosts/FavPosts";
 import FavComments from "./components/FavComments/FavComments";
 
 import { Provider } from "react-redux";
-import { combineReducers, createStore } from "redux";
+import { combineReducers, createStore, applyMiddleware  } from "redux";
+
+import ReduxThunk from 'redux-thunk';
 
 import dataReducer from "./store/reducer";
 
@@ -20,23 +22,45 @@ const rootReducer = combineReducers({
   blog: dataReducer,
 });
 
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
 
 const App = () => {
+
+  const buggiCursor = (event) => {
+    const elements = document.getElementsByClassName("move");
+
+    const arrayOfElements = Object.values(elements);
+
+    arrayOfElements.forEach((element, index) => {
+      const centerLeft = element.offsetLeft + element.clientWidth / 2;
+      const centerTop = element.offsetTop + element.clientHeight / 2;
+
+      const trueOffsetX = event.clientX + window.scrollX;
+      const trueOffsetY = event.clientY + window.scrollY;
+
+      const azimuthX = parseInt((trueOffsetX - centerLeft) / 18);
+      const azimuthY = parseInt((centerTop - trueOffsetY) / 9);
+
+      element.style.transform = ` rotateY(${azimuthX}deg) rotateX(${azimuthY}deg)`;
+    });
+  };
+
   return (
     <Provider store={store}>
       <HashRouter basename="/">
-        <div className={classes.App}>
+        <div
+          className={classes.App}
+          onMouseMove={(event) => buggiCursor(event)}
+        >
           <Navigation></Navigation>
           <main>
             <Switch>
               <Route path={"/posts/:postId"} exact component={FullPost} />
 
-              <Route path="/favoritesposts" component={FavPosts} /> 
+              <Route path="/favoritesposts" component={FavPosts} />
               <Route path="/favoritescomments" component={FavComments} />
-              
+
               <Route path="/" component={Posts} />
-              
             </Switch>
           </main>
         </div>
