@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import { HashRouter } from "react-router-dom";
-import { Route, Switch} from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 
 import classes from "./App.module.css";
 
@@ -11,20 +11,17 @@ import FullPost from "./containers/FullPost/FullPost";
 import FavPosts from "./components/FavPosts/FavPosts";
 import FavComments from "./components/FavComments/FavComments";
 
-import { Provider } from "react-redux";
-import { combineReducers, createStore, applyMiddleware  } from "redux";
+import { useDispatch } from "react-redux";
 
-import ReduxThunk from 'redux-thunk';
-
-import dataReducer from "./store/reducer";
-
-const rootReducer = combineReducers({
-  blog: dataReducer,
-});
-
-const store = createStore(rootReducer, applyMiddleware(ReduxThunk));
+import * as actionsCreators from "./store/actionCreators";
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(actionsCreators.FetchData());
+    // eslint-disable-next-line
+  }, []);
 
   const buggiCursor = (event) => {
     const elements = document.getElementsByClassName("move");
@@ -46,26 +43,21 @@ const App = () => {
   };
 
   return (
-    <Provider store={store}>
-      <HashRouter basename="/">
-        <div
-          className={classes.App}
-          onMouseMove={(event) => buggiCursor(event)}
-        >
-          <Navigation></Navigation>
-          <main>
-            <Switch>
-              <Route path={"/posts/:postId"} exact component={FullPost} />
+    <HashRouter basename="/">
+      <div className={classes.App} onMouseMove={(event) => buggiCursor(event)}>
+        <Navigation></Navigation>
+        <main>
+          <Switch>
+            <Route path={"/posts/:postId"} exact component={FullPost} />
 
-              <Route path="/favoritesposts" component={FavPosts} />
-              <Route path="/favoritescomments" component={FavComments} />
+            <Route path="/favoritesposts" component={FavPosts} />
+            <Route path="/favoritescomments" component={FavComments} />
 
-              <Route path="/" component={Posts} />
-            </Switch>
-          </main>
-        </div>
-      </HashRouter>
-    </Provider>
+            <Route path="/" component={Posts} />
+          </Switch>
+        </main>
+      </div>
+    </HashRouter>
   );
 };
 

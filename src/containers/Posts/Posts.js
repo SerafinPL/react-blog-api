@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import Post from "../../components/Post/Post";
 
@@ -8,15 +8,7 @@ import * as actionsCreators from "../../store/actionCreators";
 
 import classes from "./Posts.module.css";
 
-
 const Posts = (props) => {
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(actionsCreators.FetchData())
-   // eslint-disable-next-line
-  }, []);
-
   const List = useSelector((state) => state.blog.posts);
   const RedError = useSelector((state) => state.blog.error);
   const RedLoad = useSelector((state) => state.blog.load);
@@ -47,9 +39,7 @@ const Posts = (props) => {
 
   return (
     <div>
-      
       <section className={classes.Posts}>{posts}</section>
-      
     </div>
   );
 };
