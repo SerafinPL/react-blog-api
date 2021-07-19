@@ -44,6 +44,7 @@ const FullPost = (props) => {
       .catch((err) => {
         setError(true);
       });
+      // eslint-disable-next-line
   }, []);
 
   const favPostClick = () => {

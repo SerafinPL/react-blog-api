@@ -3,13 +3,7 @@ import React from "react";
 import classes from "./Post.module.css";
 
 const post = (props) => {
-  const cursorOn = () => {
-
-  };
-
-  const cursorOff = () => {
-
-  };
+  
 
   return (
     <article

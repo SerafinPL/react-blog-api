@@ -4,8 +4,6 @@ import Post from "../../components/Post/Post";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import * as actionTypes from "../../store/actionTypes";
-
 import * as actionsCreators from "../../store/actionCreators";
 
 import classes from "./Posts.module.css";
@@ -16,7 +14,7 @@ const Posts = (props) => {
 
   useEffect(() => {
     dispatch(actionsCreators.FetchData())
-   
+   // eslint-disable-next-line
   }, []);
 
   const List = useSelector((state) => state.blog.posts);
