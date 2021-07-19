@@ -1,22 +1,44 @@
+import * as actionTypes from "./actionTypes";
+
 
 
 export const FetchData = () => {
+    console.log('fetch')
 	return dispatch =>{
-		
-		// axios.post(url, authData)
-		// .then( response => {
-		// 	//console.log(response.data);
-		// 	const expirationDate = new Date(new Date().getTime() + (response.data.expiresIn * 1000));
-		// 	localStorage.setItem('token', response.data.idToken);
-		// 	localStorage.setItem('expirationDate', expirationDate);
-		// 	localStorage.setItem('userId', response.data.localId);
-		// 	//console.log(localStorage);
-		// 	dispatch(authSuccess(response.data.idToken, response.data.localId));
-		// 	dispatch(checkAuthTimeout(response.data.expiresIn));
-		// })
-		// .catch(error => {
-		// 	//console.log(error.response.data.error.message);
-		// 	dispatch(authFail(error));
-		// });
+        fetch("https://jsonplaceholder.typicode.com/posts", {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          })
+            .then((res) => {
+              if (res.ok) {
+                return res.json();
+              } else {
+                throw Error(res.statusText);
+              }
+            })
+            .then((res) => {
+      
+      
+              const changeRes = res.map(element => {
+                element.fav = false;
+                return element;
+              });
+              
+              dispatch({
+                type: actionTypes.STORE_RESULT,
+                result: changeRes, 
+                error: false,
+              });
+            })
+            .catch((err) => {
+              console.log(err);
+              dispatch({
+                type: actionTypes.STORE_RESULT,
+                result: err, 
+                error: true,
+              });
+            });
 	};
 };

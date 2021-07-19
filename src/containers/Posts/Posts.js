@@ -15,42 +15,8 @@ const Posts = (props) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          throw Error(res.statusText);
-        }
-      })
-      .then((res) => {
-
-
-        const changeRes = res.map(element => {
-          element.fav = false;
-          return element;
-        });
-        
-        dispatch({
-          type: actionTypes.STORE_RESULT,
-          result: changeRes, 
-          error: false,
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-        dispatch({
-          type: actionTypes.STORE_RESULT,
-          result: err, 
-          error: true,
-        });
-      });
+    dispatch(actionsCreators.FetchData())
+   
   }, []);
 
   const List = useSelector((state) => state.blog.posts);

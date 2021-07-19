@@ -1,7 +1,7 @@
 .mainHeader {
   height: 3.5rem;
   display: flex;
-  justify-content: center;
+  justify-content: left;
   align-items: center;
   background-color: #ff2058;
 }
@@ -9,8 +9,23 @@
 .mainHeader nav {
   height: 100%;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content:center;
+  align-items:flex-start;
+  position: fixed;
+  top: 55px;
+  z-index: 50;
+  background-color: #ff2058;
+  transition: transform 0.3s ease-out;
+  
+  
+}
+
+.Open {
+	transform: translateX(0);
+}
+
+.Close {
+	transform: translateX(-100%);
 }
 
 .mainHeader ul {
@@ -20,11 +35,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
 
 .mainHeader li {
   padding: 0;
-  margin: 0 2rem;
+  margin: 1em 2rem;
 }
 
 .mainHeader a {
@@ -37,4 +53,78 @@
 .mainHeader a:active,
 .mainHeader a.active {
   color: #560061;
+}
+
+
+.humb{
+  width: 35px;
+  height: 35px;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 17px;
+  cursor: pointer;
+}
+
+.humb > div{
+  width: 100%;
+  height: 2px;
+  background-color: black;
+  transition: transform 0.3s ease-out;
+}
+
+.humb :nth-child(2){
+  margin-top: 5px;
+}
+
+.humb :nth-child(3){
+  margin-top: 5px;
+}
+
+.humb.humbOn :nth-child(2){
+  opacity: 0;
+}
+
+.humb.humbOn :nth-child(1){
+  transform: rotate(45deg) translateY(10px)
+}
+
+.humb.humbOn :nth-child(3){
+  transform: rotate(-45deg) translateY(-10px);
+}
+
+
+@media screen and (min-width: 500px) {
+  .humb{
+    display: none;
+  }
+
+  .mainHeader {
+    justify-content: center;
+  }
+
+  .mainHeader nav {
+    
+    position: static;
+    align-items:center;
+  }
+
+  .mainHeader ul {
+    
+    flex-direction: row;
+  }
+
+  .mainHeader li {
+  
+    margin: 0 2rem;
+  }
+  
+
+  .Open {
+    transform: none;
+  }
+  
+  .Close {
+    transform: none;
+  }
+  
 }

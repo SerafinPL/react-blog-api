@@ -1,21 +1,41 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React , {useState} from "react";
+import { NavLink } from "react-router-dom";
 
-import classes from './Navigation.module.css';
+import classes from "./Navigation.module.css";
 
-const Navigation = props => {
+const Navigation = (props) => {
+
+  const [humbState, setHumbState] = useState(false)
+  
+  const humbMove = () => {
+    setHumbState(state => !state)
+  }
+
+  const humbGone = () => {
+    setHumbState(false);
+  }
+
+
   return (
     <header className={classes.mainHeader}>
-      <nav>
+     <div className={`${classes.humb} ${humbState ? classes.humbOn : classes.humbOff}`} onClick={humbMove}>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      <nav className={`${humbState ? classes.Open : classes.Close}`}>
+       
         <ul>
           <li>
-            <NavLink to="/" exact>All Posts</NavLink>
+            <NavLink to="/" exact onClick={humbGone}>
+              All Posts
+            </NavLink>
           </li>
           <li>
-            <NavLink to="/favoritesposts">Favorites Posts</NavLink>
+            <NavLink to="/favoritesposts" onClick={humbGone}>Favorites Posts</NavLink>
           </li>
           <li>
-            <NavLink to="/favoritescomments">Favorites Comments</NavLink>
+            <NavLink to="/favoritescomments" onClick={humbGone}>Favorites Comments</NavLink>
           </li>
         </ul>
       </nav>

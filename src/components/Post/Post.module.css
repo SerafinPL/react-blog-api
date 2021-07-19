@@ -7,12 +7,12 @@
     margin: 10px;
     box-sizing: border-box;
     cursor: pointer;
-    background-color: #c6fafd;
+    background-color: #ccc;/*#c6fafd;*/
 }
 
 .Post:hover,
 .Post:active {
-    background-color: #5c5ad6;
+    background-color: #5a58b8;
     color:#FFF;
 }
 
