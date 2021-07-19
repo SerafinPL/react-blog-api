@@ -17,11 +17,11 @@ const Posts = (props) => {
     props.history.push("/posts/" + id);
   };
 
-  let posts = <p style={{ textAlign: "center" }}>Ładowanie postów</p>;
+  let posts = <p style={{ textAlign: "center" }}>Post downloaded pleace wait...</p>;
 
   if (RedError) {
     posts = (
-      <p style={{ textAlign: "center" }}>Coś jest nie tak pojawił się ERROR</p>
+      <p style={{ textAlign: "center" }}>something is wrong we had an Error</p>
     );
   }
 
