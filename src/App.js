@@ -23,28 +23,10 @@ const App = () => {
     // eslint-disable-next-line
   }, []);
 
-  const buggiCursor = (event) => {
-    const elements = document.getElementsByClassName("move");
-
-    const arrayOfElements = Object.values(elements);
-
-    arrayOfElements.forEach((element, index) => {
-      const centerLeft = element.offsetLeft + element.clientWidth / 2;
-      const centerTop = element.offsetTop + element.clientHeight / 2;
-
-      const trueOffsetX = event.clientX + window.scrollX;
-      const trueOffsetY = event.clientY + window.scrollY;
-
-      const azimuthX = parseInt((trueOffsetX - centerLeft) / 18);
-      const azimuthY = parseInt((centerTop - trueOffsetY) / 9);
-
-      element.style.transform = ` rotateY(${azimuthX}deg) rotateX(${azimuthY}deg)`;
-    });
-  };
 
   return (
     <HashRouter basename="/">
-      <div className={classes.App} onMouseMove={(event) => buggiCursor(event)}>
+      <div className={classes.App}>
         <Navigation></Navigation>
         <main>
           <Switch>
