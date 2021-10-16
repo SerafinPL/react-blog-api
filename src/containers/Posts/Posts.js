@@ -2,9 +2,9 @@ import React from "react";
 
 import Post from "../../components/Post/Post";
 
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector} from "react-redux";
 
-import * as actionsCreators from "../../store/actionCreators";
+
 
 import classes from "./Posts.module.css";
 

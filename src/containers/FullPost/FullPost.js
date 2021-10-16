@@ -13,7 +13,7 @@ const FullPost = (props) => {
   const dispatch = useDispatch();
 
   const [postItem] = useSelector((state) =>
-    state.blog.posts.filter((post) => post.id == props.match.params.postId)
+    state.blog.posts.filter((post) => post.id === props.match.params.postId)
   );
 
   const favComments = useSelector((state) =>
