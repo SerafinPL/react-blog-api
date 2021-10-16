@@ -1,6 +1,6 @@
 # Kuba Koder  introduce Blog Rest Api App online: https://serafinpl.github.io/react-blog-api
 
-## Used tools:
+### Used tools:
 
 ### React JS
 ### React Redux
@@ -9,3 +9,4 @@
 ### GH Pages
 
 ### Fetch API connect to REST API: https://jsonplaceholder.typicode.com
+##
