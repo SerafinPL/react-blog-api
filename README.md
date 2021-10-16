@@ -8,5 +8,4 @@
 ## Redux Thunk
 ## GH Pages
 
-## Fetch API connected REST API:
-https://jsonplaceholder.typicode.com
+## Fetch API connect to REST API: https://jsonplaceholder.typicode.com
