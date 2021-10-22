@@ -35,7 +35,7 @@ const App = () => {
             <Route path="/favoritesposts" component={FavPosts} />
             <Route path="/favoritescomments" component={FavComments} />
 
-            <Route path="/" component={Posts} />
+            <Route path="/" exact component={Posts} />
           </Switch>
         </main>
       </div>

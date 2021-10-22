@@ -7,19 +7,20 @@ import * as actionTypes from "../../store/actionTypes";
 import classes from "./FullPost.module.css";
 
 const FullPost = (props) => {
+  console.log("FullPost", props);
   const [error, setError] = useState(null);
   const [commentsList, setCommentsList] = useState(null);
 
   const dispatch = useDispatch();
 
-  const [postItem] = useSelector((state) =>
-    state.blog.posts.filter((post) => post.id === props.match.params.postId)
+  const [postItem] = useSelector(state =>
+    
+      state.blog.posts.filter(post => post.id === Number(props.match.params.postId))
   );
 
-  const favComments = useSelector((state) =>
-    state.blog.commentsFav
-  );
-  
+  console.log(postItem);
+
+  const favComments = useSelector((state) => state.blog.commentsFav);
 
   useEffect(() => {
     fetch(
@@ -44,7 +45,7 @@ const FullPost = (props) => {
       .catch((err) => {
         setError(true);
       });
-      // eslint-disable-next-line
+    // eslint-disable-next-line
   }, []);
 
   const favPostClick = () => {
@@ -61,23 +62,23 @@ const FullPost = (props) => {
     });
   };
 
-  let post = <Redirect to='/'/>;
-
- 
+  let post = 'Loading';/*<Redirect to="/" />;*/
 
   let comments = [];
   if (commentsList) {
     comments = commentsList.map((comment) => {
-
-      const isFav = favComments.findIndex(fav => fav.id === comment.id) > -1
+      const isFav = favComments.findIndex((fav) => fav.id === comment.id) > -1;
 
       return (
         <div key={comment.id} className={classes.FullPost}>
           <h3>{comment.name}</h3>
           <p>{comment.body}</p>
           <small>{comment.email}</small>
-          <button  className={isFav ? classes.Fav : classes.NoFav} onClick={() => favCommentClick(comment)}>
-          {isFav ? "Remove from Favorites" : "Add to Favorites"}
+          <button
+            className={isFav ? classes.Fav : classes.NoFav}
+            onClick={() => favCommentClick(comment)}
+          >
+            {isFav ? "Remove from Favorites" : "Add to Favorites"}
           </button>
         </div>
       );
@@ -90,7 +91,10 @@ const FullPost = (props) => {
         <div className={classes.FullPost}>
           <h1>{postItem.title}</h1>
           <p>{postItem.body}</p>
-          <button className={postItem.fav ? classes.Fav : classes.NoFav} onClick={favPostClick}>
+          <button
+            className={postItem.fav ? classes.Fav : classes.NoFav}
+            onClick={favPostClick}
+          >
             {postItem.fav ? "Remove from Favorites" : "Add to Favorites"}
           </button>
         </div>
@@ -99,8 +103,8 @@ const FullPost = (props) => {
           {error
             ? "Comments are not loaded..."
             : commentsList
-              ? comments
-              : "Comments are loading..."}
+            ? comments
+            : "Comments are loading..."}
         </div>
       </React.Fragment>
     );
