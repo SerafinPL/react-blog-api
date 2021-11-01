@@ -7,6 +7,5 @@
 ### React Router
 ### Redux Thunk
 ### GH Pages
-
 ### Fetch API connect to REST API: https://jsonplaceholder.typicode.com
 ##
